@@ -948,6 +948,14 @@ QMF_DOMAIN_ERROR FDK_QmfDomain_Configure(HANDLE_FDK_QMF_DOMAIN hqd) {
       pWorkBuffer[4] = GetQmfWorkBufferCore7();
     }
 
+    for (i = 0; (i < QMF_MAX_WB_SECTIONS) && (size > i * QMF_WB_SECTION_SIZE);
+         i++) {
+      if (pWorkBuffer[i] == NULL) {
+        err = QMF_DOMAIN_OUT_OF_MEMORY;
+        goto bail;
+      }
+    }
+
     /* 8. distribute workbuffer over processing channels */
     for (i = 0; i < hgc->nQmfProcChannels; i++) {
       FDK_QmfDomain_FeedWorkBuffer(hqd, i, pWorkBuffer, size_main * i,
