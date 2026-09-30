@@ -7,6 +7,7 @@
         "build.zig",
         "build.zig.zon",
         "NOTICE",
+        "MODIFICATIONS",
         "libAACdec/include/aacdecoder_lib.h",
         "libAACdec/src/aac_ram.cpp",
         "libAACdec/src/aac_ram.h",

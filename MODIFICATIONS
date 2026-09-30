@@ -1,0 +1,12 @@
+Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library for Android
+
+This is a modified version of the FDK AAC library (https://github.com/mstorsjo/fdk-aac, branch
+master), maintained at https://github.com/nat3Github/cpp-lib-fdk-aac (branch zig), where its complete
+source is available free of charge. Changes to upstream, as required by section 2 of NOTICE:
+
+  2026-09-29  added build.zig, build.zig.zon (build with the Zig build system); .gitignore
+  2026-09-30  libFDK/src/FDK_qmf_domain.cpp: fail QMF domain configure when a work buffer
+              allocation fails
+  2026-09-30  added this file
+
+No patent license is granted; see NOTICE section 3.
