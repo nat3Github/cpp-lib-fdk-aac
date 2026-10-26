@@ -588,7 +588,18 @@ static void FDKaacEnc_MapConfig(CODER_CONFIG *const cc,
     cc->matrixMixdownA = 0;
   }
 
-  cc->channelConfigZero = 0;
+  /* ADTS has 3 bits for the channel configuration: 6.1 and 7.1 (configurations
+   * 11, 12, 14) were written truncated, as 3, 4 and 6 channels. Signal
+   * configuration 0 and send a PCE in every frame instead, so each frame stays
+   * decodable on its own (seeking, joining a stream). */
+  if (extCfg->userTpType == TT_MP4_ADTS &&
+      (cc->channelMode == MODE_6_1 || cc->channelMode == MODE_7_1_BACK ||
+       cc->channelMode == MODE_7_1_TOP_FRONT)) {
+    cc->channelConfigZero = 1;
+    if (extCfg->userTpHeaderPeriod == 0xFF) cc->headerPeriod = 1;
+  } else {
+    cc->channelConfigZero = 0;
+  }
 }
 
 /*

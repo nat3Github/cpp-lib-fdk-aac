@@ -8,5 +8,8 @@ source is available free of charge. Changes to upstream, as required by section 
   2026-09-30  libFDK/src/FDK_qmf_domain.cpp: fail QMF domain configure when a work buffer
               allocation fails
   2026-09-30  added this file
+  2026-10-26  libAACenc/src/aacenc_lib.cpp: ADTS with 6.1 / 7.1 (channel configurations 11,
+              12, 14) signals configuration 0 and a PCE in every frame; the 3-bit ADTS field
+              carried the configuration truncated
 
 No patent license is granted; see NOTICE section 3.
