@@ -14,6 +14,7 @@ pub fn build(b: *std.Build) void {
     mod.addCSourceFiles(.{ .files = &sources, .flags = &.{
         "-fno-exceptions",
         "-fno-rtti",
+        "-fvisibility=hidden",
         // fixed-point code left-shifts negative values everywhere (UB in C++ < 20, fine in practice).
         "-fno-sanitize=shift-base",
         // ponytail: LIB_INFO build_date/build_time are empty; zig rejects __DATE__/__TIME__ in release.
